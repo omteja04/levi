@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>URL Shortener</h1>
+    <form id="urlForm">
+        <label for="longUrl">Enter Long URL:</label>
+        <input type="text" id="longUrl" name="longUrl" required>
+        <button type="submit">Shorten URL</button>
+    </form>
+    <p id="shortUrlDisplay"></p>
+
+    <script>
+        // Redirect logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const shortCode = urlParams.get('code');
+
+            if (shortCode) {
+                const apiUrl = `https://8oxqs9zlt6.execute-api.us-east-1.amazonaws.com/dev/${shortCode}`;
+
+                // Fetch the long URL from the API
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.statusCode === 302) {
+                            // Redirect to the long URL
+                            window.location.href = data.headers.Location;
+                        } else {
+                            throw new Error('Short URL not found');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.body.innerHTML = '<h1>Short URL not found</h1>';
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>
