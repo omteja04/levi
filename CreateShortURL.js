@@ -28,7 +28,8 @@ export const handler = async (event) => {
         return {
             statusCode: 200,
             body: {
-                shortURL: shortURL
+                shortURL: shortURL,
+                redirectedURL: `http://${process.env.DOMAIN_NAME}/redirect.html?code=${shortURL}`
             }
         };
     } catch (error) {
