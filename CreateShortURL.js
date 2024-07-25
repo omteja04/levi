@@ -29,7 +29,7 @@ export const handler = async (event) => {
             statusCode: 200,
             body: {
                 shortURL: shortURL,
-                redirectedURL: `http://${process.env.DOMAIN_NAME}/redirect.html?code=${shortURL}`
+                redirectedURL: `https://${process.env.DOMAIN_NAME}/?code=${shortURL}`
             }
         };
     } catch (error) {
@@ -40,14 +40,3 @@ export const handler = async (event) => {
     }
 };
 
-
-
-
-/* 
-
-{
-  "body": "{\"longURL\":\"https://github.com/omteja04/\"}"
-}
-
-
-*/
