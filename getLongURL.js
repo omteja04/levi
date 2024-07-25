@@ -66,12 +66,3 @@ export const handler = async (event) => {
         };
     }
 };
-
-/* 
-
-
-{
-  "body": "{\"shortURL\":\"dcf53eb0\"}"
-}
-
-*/
