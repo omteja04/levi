@@ -4,46 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
-    <script src="script.js" defer></script>
+    <title>Levi URL Shortener</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>URL Shortener</h1>
-    <form id="urlForm">
-        <label for="longUrl">Enter Long URL:</label>
-        <input type="text" id="longUrl" name="longUrl" required>
-        <button type="submit">Shorten URL</button>
-    </form>
-    <p id="shortUrlDisplay"></p>
 
-    <script>
-        // Redirect logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const shortCode = urlParams.get('code');
+    <div class="header">
+        <div class="header-content">
+            <a href="#logo" class="logo">
+                <h1>levi.ly®</h1>
+            </a>
+            <div class="header-content-right">
+                <nav class="nav">
+                    <a href="#about-project" class="nav-link">About</a>
+                    <a href="#team-details" class="nav-link">ContactUs</a>
+                </nav>
+                <a href="https://github.com/omteja04/levi" target="_blank" class="source-code-button">Source Code</a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="main-section">
+            <div class="main-section__text">
 
-            if (shortCode) {
-                const apiUrl = `https://8oxqs9zlt6.execute-api.us-east-1.amazonaws.com/dev/${shortCode}`;
+                <p class="main-section-title">Shrink Your Links, Expand Your Reach :)</p>
+                <p class="main-section-data">levi.ly is an efficient and easy-to-use URL shortening service that
+                    streamlines your online
+                    experience.
+                </p>
+            </div>
 
-                // Fetch the long URL from the API
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.statusCode === 302) {
-                            // Redirect to the long URL
-                            window.location.href = data.headers.Location;
-                        } else {
-                            throw new Error('Short URL not found');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        document.body.innerHTML = '<h1>Short URL not found</h1>';
-                    });
-            }
-        });
-    </script>
+            <form id="form">
+                <input type="text" id="long-url" name="long-url" class="long-url"
+                    placeholder="https://www.example.com/looooong-url" required>
+                <button type="submit" id="shorten-button">Shorten Now!</button>
+            </form>
+
+            <div class="result-section" id="result-section" style="display: none;">
+
+                <p class="result-section-title">Your shortened URL:</p>
+                <div class="result-content">
+                    <p id="shortUrlDisplay"></p>
+                    <button class="image-button" onclick="copyToClipboard()">
+                        <img src="./assets/copy.png" alt="Copy Now!" id="copy-icon" class="copy-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
