@@ -23,7 +23,7 @@ body {
     text-align: center;
     /* background-color: #ffffff; */
     padding: 0.1rem;
-    background-image: url('../assets/Swirl.png');
+    background-image: url('./assets/Swirl.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
