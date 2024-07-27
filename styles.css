@@ -152,12 +152,15 @@ body {
     gap: 2rem;
     position: relative;
     justify-content: center;
+    width: 400px;
 }
 
 .long-url {
-    width: 400px;
+    /* width: 400px; */
+    width: 70%;
     height: 20px;
     padding: 16px;
+    padding-right: 40%;
     outline: none;
     border: 2px solid #909090;
     border-radius: 80px;
@@ -180,7 +183,7 @@ body {
     position: absolute;
     cursor: pointer;
     right: 0;
-    margin-right: 4px;
+    margin-right: -56px;
     color: white;
 }
 
@@ -204,7 +207,7 @@ body {
 
 }
 
-.shortUrlDisplay {
+.shortUrlDisplay:active {
     color: white;
 }
 
