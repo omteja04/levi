@@ -16,7 +16,7 @@ document.getElementById('form').addEventListener('submit', function (event) {
         .then(data => {
             const shortUrl = `https://omteja04.github.io/levi/?code=${data.body.shortURL}`;
 
-            document.getElementById('shortUrlDisplay').innerHTML = `<a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+            document.getElementById('shortUrlDisplay').innerHTML = `<a href="${shortUrl}" target="_blank" style="color: white;">${shortUrl}</a>`;
             resultSection.style.display = 'block';
         })
         .catch(error => console.error('Error:', error));
