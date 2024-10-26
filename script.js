@@ -2,7 +2,7 @@ document.getElementById('form').addEventListener('submit', function (event) {
     event.preventDefault();
 
     const longUrl = document.getElementById('long-url').value;
-    const apiUrl = 'https://smtdwk00g9.execute-api.us-east-1.amazonaws.com/dev/shorten';
+    const apiUrl = 'https://wh4nccec0c.execute-api.us-east-1.amazonaws.com/dev/shorten';
     const resultSection = document.getElementById('result-section');
 
     fetch(apiUrl, {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const shortCode = urlParams.get('code');
 
     if (shortCode) {
-        const apiUrl = `https://smtdwk00g9.execute-api.us-east-1.amazonaws.com/dev/${shortCode}`;
+        const apiUrl = `https://wh4nccec0c.execute-api.us-east-1.amazonaws.com/dev/${shortCode}`;
 
         // Fetch the long URL from the API
         fetch(apiUrl)
